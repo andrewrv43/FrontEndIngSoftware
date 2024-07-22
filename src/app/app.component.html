@@ -1,5 +1,11 @@
+<div class="img-fondo"></div>
 <div class="menu-items">
+    <h2>Gestion de minimercado</h2>
+<div class="container">
   @if (logged) {
+    <div class="header">
+      <h2>Gestion de minimercado</h2>
+      <div class="nav-links">
   <a routerLink="/productos" routerLinkActive="active"
     ariaCurrentWhenActive="page">Productos</a>
 
@@ -8,10 +14,16 @@
 
   <button routerLink="/login" routerLinkActive="active" (click)="cerrarSesion()"
     ariaCurrentWhenActive="page">Cerrar Sesión</button>
+  </div>
+    </div>
 
   }@else {
   <a routerLink="/login" routerLinkActive="active"
-    ariaCurrentWhenActive="page">Iniciar Sesión</a>
+    ariaCurrentWhenActive="page"></a>
   }
 </div>
+</div>
+
+
+
 <router-outlet></router-outlet>

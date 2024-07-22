@@ -1,6 +1,6 @@
 <div class="img-fondo">
     <div class="container">
-      <h2>Lista de Usuarios</h2>
+      <h2>Lista de Productos</h2>
   
       <div class="search-container">
         <label for="search-id">Buscar por ID:</label>
@@ -20,7 +20,7 @@
         </thead>
         <tbody>
           <tr *ngIf="productoFiltrado.length === 0">
-            <td colspan="4">No hay usuarios para mostrar.</td>
+            <td colspan="4">No hay productos para mostrar.</td>
           </tr>
           <tr *ngFor="let producto of productoFiltrado">
             <td>{{ producto.id }}</td>

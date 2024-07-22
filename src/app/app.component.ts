@@ -5,11 +5,12 @@ import { CrearUsuariosComponent } from './usuarios/crearusuarios/crearusuarios.c
 import { CookieService } from 'ngx-cookie-service';
 import { ListProductoComponent } from './productos/list-producto/list-producto.component';
 import { RegisterProductoComponent } from './productos/register-producto/register-producto.component';
+import { HomeComponent } from './home/home.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,ListusuariosComponent,CrearUsuariosComponent, ListProductoComponent, RegisterProductoComponent, RouterLink,RouterLinkActive],
+  imports: [RouterOutlet,ListusuariosComponent,CrearUsuariosComponent, ListProductoComponent, RegisterProductoComponent,HomeComponent, RouterLink,RouterLinkActive,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
