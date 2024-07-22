@@ -1,0 +1,21 @@
+<div class="img-fondo">
+  <div class="crear-usuarios-container">
+    <h2>Crear Usuario</h2>
+    <form (submit)="crearUsuario($event)">
+      <label for="cedula">Cédula:</label>
+      <input id="cedula" name="cedula" type="text" required>
+  
+      <label for="nombre">Nombre:</label>
+      <input id="nombre" name="nombre" type="text" required>
+  
+      <label for="password">Contraseña:</label>
+      <input id="password" name="password" type="password" required>
+  
+      <label for="id_rol">Rol ID:</label>
+      <input id="id_rol" name="id_rol" type="number" required>
+  
+      <button type="submit">Crear Usuario</button>
+    </form>
+  </div>
+  
+</div>

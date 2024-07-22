@@ -1,31 +1,37 @@
-<table>
-<thead>
-    <tr>
-        <td>
-            ID
-        </td>
-        <td>
-            Nombre
-        </td>
-        <td>
-            Cédula
-        </td>
-    </tr>
-</thead>
-<tbody>
-    @for (item of usuarios; track $index) {
-       <tr>
-        <td>
-            {{item.id}}
-        </td>
-        <td>
-            {{item.nombre}}
-        </td>
-        <td>
-            {{item.cedula}}
-        </td>
-       </tr>
-    }
+<div class="img-fondo">
+    <div class="container">
+      <h2>Lista de Usuarios</h2>
+  
 
-</tbody>
-</table>
+      <div class="search-container">
+        <label for="search-id">Buscar por ID:</label>
+        <input type="number" id="search-id" placeholder="Ingrese ID">
+        <button (click)="buscarUsuario()">Buscar</button>
+        <button (click)="resetBusqueda()">Restablecer</button> 
+  
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Cédula</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="usuariosFiltrados.length === 0">
+            <td colspan="4">No hay usuarios para mostrar.</td>
+          </tr>
+          <tr *ngFor="let usuario of usuariosFiltrados">
+            <td>{{ usuario.id }}</td>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.cedula }}</td>
+            <td>
+              <button (click)="eliminarUsuario(usuario.id)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
