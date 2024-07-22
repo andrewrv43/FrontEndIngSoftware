@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-register-producto',
@@ -7,8 +8,20 @@ import { Component } from '@angular/core';
   templateUrl: './register-producto.component.html',
   styleUrl: './register-producto.component.css'
 })
-export class RegisterProductoComponent {
+export class RegisterProductoComponent implements OnInit {
+  constructor(private cookie: CookieService) {
 
+  }
+  ngOnInit(): void {
+    this.verificarLogin();
+  }
+  verificarLogin() {
+    if (this.cookie.get('rol') != '1') {
+      window.location.replace('/login')
+      return false;
+    }
+    return true;
+  }
   async registrarProducto(event: Event) {
     event.preventDefault();
 

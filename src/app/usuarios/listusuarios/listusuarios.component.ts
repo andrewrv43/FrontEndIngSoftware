@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-listusuarios',
@@ -11,11 +12,20 @@ import { CommonModule } from '@angular/common';
 export class ListusuariosComponent implements OnInit {
   usuarios: any[] = [];
   usuariosFiltrados: any[] = []; 
+constructor(private cookie:CookieService){
 
+}
   async ngOnInit() {
+    if (this.verificarLogin())
     await this.obtenerUsuarios();
   }
-
+verificarLogin(){
+  if(this.cookie.get('rol')!='1'){
+    window.location.replace('/login')
+    return false;
+  }
+  return true;
+}
   async obtenerUsuarios() {
     try {
       const response = await fetch('https://accused-hedwig-sajaremastered-673fe6dd.koyeb.app/usuarios', {

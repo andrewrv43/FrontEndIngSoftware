@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-list-producto',
@@ -11,9 +12,19 @@ import { CommonModule } from '@angular/common';
 export class ListProductoComponent {
   productos: any[] = [];
   productoFiltrado: any[] = []; 
-
+constructor(private cookie:CookieService){
+}
   async ngOnInit() {
+    if(this.verificarLogin())
     await this.obtenerProductos();
+  }
+
+  verificarLogin(){
+    if(this.cookie.get('rol')!='1'){
+      window.location.replace('/login')
+      return false;
+    }
+    return true;
   }
 regprod(){
   window.location.replace('registerProduct')

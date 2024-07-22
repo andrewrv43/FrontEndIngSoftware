@@ -18,13 +18,17 @@ export class AppComponent implements OnInit {
   constructor(private cookie: CookieService) {
   }
   ngOnInit(): void {
-
+    
     const key = this.cookie.get('cedula');
     const rol = this.cookie.get('rol');
+ 
     if (key && rol) {
+      this.key=key;
+      this.rol=rol;
       this.logged = true;
     } else {
-
+      this.key='';
+      this.rol='';
       this.logged = false;
     }
 
@@ -32,10 +36,13 @@ export class AppComponent implements OnInit {
 
   logged: boolean = false;
   title = 'FrontEndIngSoftware';
-
-  cerrarSesion(){
-    this.cookie.set('cedula','');
-    this.cookie.set('rol','');
+  key = '';
+  rol= '';
+  cerrarSesion() {
+    this.key='';
+    this.rol='';
+    this.cookie.set('cedula', '');
+    this.cookie.set('rol', '');
     window.location.replace('/login')
   }
 }

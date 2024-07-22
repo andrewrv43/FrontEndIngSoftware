@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-crearusuarios',
@@ -7,11 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./crearusuarios.component.css']
 })
 export class CrearUsuariosComponent implements OnInit {
+constructor(private cookie: CookieService){
 
+}
   async ngOnInit() {
-    // Puedes incluir lógica adicional si es necesario al iniciar el componente
+    this.verificarLogin()
   }
-
+  verificarLogin(){
+    if(this.cookie.get('rol')!='1'){
+      window.location.replace('/login')
+      return false;
+    }
+    return true;
+  }
   async crearUsuario(event: Event) {
     event.preventDefault(); 
 

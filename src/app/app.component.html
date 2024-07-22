@@ -24,6 +24,7 @@
     <a routerLink="/historial" routerLinkActive="active"
     ariaCurrentWhenActive="page">Historial</a>
 
+  <br>
   <button routerLink="/login" routerLinkActive="active" (click)="cerrarSesion()"
     ariaCurrentWhenActive="page">Cerrar Sesión</button>
   </div>
@@ -31,7 +32,7 @@
 
   }@else {
   <a routerLink="/login" routerLinkActive="active"
-    ariaCurrentWhenActive="page"></a>
+    ariaCurrentWhenActive="page">Iniciar Sesión</a>
   }
 </div>
 </div>
