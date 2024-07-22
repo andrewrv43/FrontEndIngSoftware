@@ -13,13 +13,30 @@ import { RegisterProductoComponent } from './productos/register-producto/registe
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit{
-  constructor(private cookie:CookieService) {
+export class AppComponent implements OnInit {
+  constructor(private cookie: CookieService) {
   }
   ngOnInit(): void {
-    this.cookie.get('usuario')
+
+    const key = this.cookie.get('cedula');
+    const rol = this.cookie.get('rol');
+    if (key && rol) {
+      this.logged = true;
+    } else {
+
+      this.logged = false;
+    }
+
   }
+
+  logged: boolean = false;
   title = 'FrontEndIngSoftware';
+
+  cerrarSesion(){
+    this.cookie.set('cedula','');
+    this.cookie.set('rol','');
+    window.location.replace('/login')
+  }
 }
 
 

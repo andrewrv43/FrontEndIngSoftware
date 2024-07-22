@@ -28,7 +28,7 @@ export class ListusuariosComponent implements OnInit {
       if (!response.ok) {
         throw new Error('Error en la solicitud GET: ' + response.statusText);
       }
-
+      
       this.usuarios = await response.json();
       this.usuariosFiltrados = this.usuarios; 
     } catch (error) {
