@@ -1,0 +1,37 @@
+<div class="img-fondo">
+    <div class="container">
+      <h2>Lista de Historiales</h2>
+  
+      <div class="search-container">
+        <label for="search-id">Buscar por ID:</label>
+        <input type="number" id="search-id" placeholder="Ingrese ID">
+        <button (click)="buscarHistorial()">Buscar</button>
+        <button (click)="resetBusqueda()">Restablecer</button> 
+        <button (click)="regHistorial()">Registrar</button> 
+      </div>
+  
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ID Usuario</th>
+            <th>Productos</th>
+            <th>Total</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="historialFiltrado.length === 0">
+            <td colspan="5">No hay historiales para mostrar.</td>
+          </tr>
+          <tr *ngFor="let historial of historialFiltrado">
+            <td>{{ historial.id }}</td>
+            <td>{{ historial.id_usuario }}</td>
+            <td>{{ historial.productos }}</td>
+            <td>{{ historial.total | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

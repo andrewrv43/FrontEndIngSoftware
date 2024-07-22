@@ -1,0 +1,32 @@
+<div class="img-fondo">
+    <div class="container">
+      <h2>Lista de Roles</h2>
+  
+      <div class="search-container">
+        <button (click)="regRol()">Registrar Nuevo Rol</button>
+      </div>
+  
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="rolFiltrado.length === 0">
+            <td colspan="3">No hay roles para mostrar.</td>
+          </tr>
+          <tr *ngFor="let rol of rolFiltrado">
+            <td>{{ rol.id }}</td>
+            <td>{{ rol.nombre }}</td>
+            <td>
+              <button (click)="eliminarRol(rol.id)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

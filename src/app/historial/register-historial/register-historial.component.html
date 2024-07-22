@@ -1,0 +1,18 @@
+<div class="img-fondo">
+    <div class="registrar-historial-container">
+      <h2>Registrar Nuevo Historial</h2>
+      <form (submit)="registrarHistorial($event)">
+        <label for="id_usuario">ID Usuario:</label>
+        <input id="id_usuario" name="id_usuario" type="number" required>
+  
+        <label for="productos">Productos:</label>
+        <input id="productos" name="productos" type="text" required>
+  
+        <label for="total">Total:</label>
+        <input id="total" name="total" type="number" step="0.01" required>
+  
+        <button type="submit">Registrar Historial</button>
+      </form>
+    </div>
+  </div>
+  

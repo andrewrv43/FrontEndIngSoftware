@@ -1,0 +1,37 @@
+<div class="img-fondo">
+<div class="container">
+    <h2>Lista de Promociones</h2>
+  
+    <div class="search-container">
+      <label for="search-id">Buscar por ID:</label>
+      <input type="number" id="search-id" placeholder="Ingrese ID">
+      <button (click)="buscarPromocion()">Buscar</button>
+      <button (click)="resetBusqueda()">Restablecer</button> 
+      <button (click)="regPromocion()">Registrar</button> 
+    </div>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ID Producto</th>
+          <th>Porcentaje</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="promocionesFiltradas.length === 0">
+          <td colspan="4">No hay promociones para mostrar.</td>
+        </tr>
+        <tr *ngFor="let promocion of promocionesFiltradas">
+          <td>{{ promocion.id }}</td>
+          <td>{{ promocion.id_producto }}</td>
+          <td>{{ promocion.porcentaje }}</td>
+          <td>
+            <button (click)="eliminarPromocion(promocion.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="img-fondo">
+    <div class="container">
+      <h2>Lista de Proveedores</h2>
+  
+      <div class="search-container">
+        <button (click)="regProveedor()">Registrar Proveedor</button>
+      </div>
+  
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="proveedorFiltrado.length === 0">
+            <td colspan="3">No hay proveedores para mostrar.</td>
+          </tr>
+          <tr *ngFor="let proveedor of proveedorFiltrado">
+            <td>{{ proveedor.id }}</td>
+            <td>{{ proveedor.nombre }}</td>
+            <td>
+              <button (click)="eliminarProveedor(proveedor.id)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
