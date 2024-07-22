@@ -34,6 +34,7 @@ export class RegisterProveedorComponent {
       const result = await response.json();
       console.log('Resultado de la solicitud:', result);
       alert('Proveedor registrado con éxito: ' + JSON.stringify(result));
+      form.reset();
 
     } catch (error) {
       // Verifica si el error es una instancia de Error

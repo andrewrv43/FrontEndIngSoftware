@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-
+import { CommonModule } from '@angular/common';
 @Component({
+
   selector: 'app-register-producto',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './register-producto.component.html',
   styleUrl: './register-producto.component.css'
 })
 export class RegisterProductoComponent implements OnInit {
-  constructor(private cookie: CookieService) {
+  proveedores : any[] = [];
 
+  constructor(private cookie: CookieService) {
   }
   ngOnInit(): void {
-    this.verificarLogin();
+    if(this.verificarLogin()){
+      this.getProveedores();
+    }
+    
   }
   verificarLogin() {
     if (this.cookie.get('rol') != '1') {
@@ -27,7 +32,6 @@ export class RegisterProductoComponent implements OnInit {
 
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
-
     const usuarioData = {
       id_proveedor: parseInt(formData.get('id_proveedor') as string, 10),
       nombre: formData.get('nombre') as string,
@@ -51,7 +55,7 @@ export class RegisterProductoComponent implements OnInit {
       const result = await response.json();
       console.log('Resultado de la solicitud:', result);
       alert('Producto registrado con éxito: ' + JSON.stringify(result));
-
+      form.reset();
     } catch (error) {
       // Verifica si el error es una instancia de Error
       if (error instanceof Error) {
@@ -61,4 +65,24 @@ export class RegisterProductoComponent implements OnInit {
       }
     }
   }
+
+  async getProveedores(){
+    try {
+      const response = await fetch('https://accused-hedwig-sajaremastered-673fe6dd.koyeb.app/obtProveedores', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Error en la solicitud GET: ' + response.statusText);
+      }
+      this.proveedores = await response.json();
+
+    } catch (error) {
+      alert('Error al obtener productos: ' + (error as Error).message);
+    }
+  }
+
 }

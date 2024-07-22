@@ -11,9 +11,10 @@
       <label for="password">Contraseña:</label>
       <input id="password" name="password" type="password" required>
   
-      <label for="id_rol">Rol ID:</label>
-      <input id="id_rol" name="id_rol" type="number" required>
-  
+      <label for="id_rol">Rol:</label>
+      <select id="id_rol" name = "id_rol" formControlName="id_rol" required>
+        <option *ngFor="let rol of roles" [value]="rol.id">{{ rol.nombre }}</option>
+      </select>
       <button type="submit">Crear Usuario</button>
     </form>
   </div>

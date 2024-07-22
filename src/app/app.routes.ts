@@ -13,7 +13,7 @@ import { ListRolesComponent } from './roles/list-roles/list-roles.component';
 import { RegisterRolesComponent } from './roles/register-roles/register-roles.component';
 import { ListHistorialComponent } from './historial/list-historial/list-historial.component';
 import { RegisterHistorialComponent } from './historial/register-historial/register-historial.component';
-
+import { CrearUsuariosComponent } from './usuarios/crearusuarios/crearusuarios.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -60,5 +60,9 @@ export const routes: Routes = [
     },
     {path:'registerHistorial',
         component:RegisterHistorialComponent
+    },
+    {path:'registerUser',
+        component:CrearUsuariosComponent
+
     }
 ];

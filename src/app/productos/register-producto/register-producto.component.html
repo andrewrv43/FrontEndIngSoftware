@@ -1,10 +1,11 @@
 <div class="img-fondo">
     <div class="registrar-producto-container">
-      <h2>Crear Usuario</h2>
+      <h2>Registrar Producto</h2>
       <form (submit)="registrarProducto($event)">
-        <label for="id_proveedor">ID Proveedor:</label>
-        <input id="id_proveedor" name="id_proveedor" type="text" required>
-    
+        <label for="id_proveedor">Proveedor:</label>
+        <select id="id_proveedor" name = "id_proveedor" formControlName="id_proveedor" required>
+          <option *ngFor="let proveedor of proveedores" [value]="proveedor.id">{{ proveedor.nombre }}</option>
+        </select>
         <label for="nombre">Nombre:</label>
         <input id="nombre" name="nombre" type="text" required>
     

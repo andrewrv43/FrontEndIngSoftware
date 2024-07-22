@@ -26,6 +26,9 @@ verificarLogin(){
   }
   return true;
 }
+regUser(){
+  window.location.replace('registerUser')
+}
   async obtenerUsuarios() {
     try {
       const response = await fetch('https://accused-hedwig-sajaremastered-673fe6dd.koyeb.app/usuarios', {

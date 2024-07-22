@@ -1,28 +1,52 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-crearusuarios',
   standalone: true,
+  imports: [CommonModule],
   templateUrl: './crearusuarios.component.html',
   styleUrls: ['./crearusuarios.component.css']
 })
 export class CrearUsuariosComponent implements OnInit {
-constructor(private cookie: CookieService){
+  roles: any[] = [];
+  constructor(private cookie: CookieService) {
 
-}
-  async ngOnInit() {
-    this.verificarLogin()
   }
-  verificarLogin(){
-    if(this.cookie.get('rol')!='1'){
+  async ngOnInit() {
+    if (this.verificarLogin()) {
+      this.getRoles();
+    }
+  }
+  verificarLogin() {
+    if (this.cookie.get('rol') != '1') {
       window.location.replace('/login')
       return false;
     }
     return true;
   }
+  async getRoles() {
+    try {
+      const response = await fetch('https://accused-hedwig-sajaremastered-673fe6dd.koyeb.app/obtRoles', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Error en la solicitud GET: ' + response.statusText);
+      }
+      this.roles = await response.json();
+
+    } catch (error) {
+      alert('Error al obtener productos: ' + (error as Error).message);
+    }
+  }
+
   async crearUsuario(event: Event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
@@ -50,6 +74,7 @@ constructor(private cookie: CookieService){
       const result = await response.json();
       console.log('Resultado de la solicitud:', result);
       alert('Usuario creado con éxito: ' + JSON.stringify(result));
+      form.reset();
 
     } catch (error) {
       // Verifica si el error es una instancia de Error
