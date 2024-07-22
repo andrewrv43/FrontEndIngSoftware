@@ -16,7 +16,7 @@ export class RegisterProductoComponent {
     const formData = new FormData(form);
 
     const usuarioData = {
-      id_producto: parseInt(formData.get('id_producto') as string, 10),
+      id_proveedor: parseInt(formData.get('id_proveedor') as string, 10),
       nombre: formData.get('nombre') as string,
       precio: parseFloat(formData.get('precio') as string),
       stock: parseInt(formData.get('stock') as string, 10),

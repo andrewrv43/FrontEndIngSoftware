@@ -1,9 +1,17 @@
-<div class="menu-items">   
-    @if (logged) {
-    <a routerLink="/listaUsuarios" routerLinkActive="active" ariaCurrentWhenActive="page">Inicio</a>
-    <button routerLink="/login" routerLinkActive="active" (click)="cerrarSesion()" ariaCurrentWhenActive="page">Cerrar Sesión</button>
+<div class="menu-items">
+  @if (logged) {
+  <a routerLink="/productos" routerLinkActive="active"
+    ariaCurrentWhenActive="page">Productos</a>
+
+  <a routerLink="/listaUsuarios" routerLinkActive="active"
+    ariaCurrentWhenActive="page">Usuarios</a>
+
+  <button routerLink="/login" routerLinkActive="active" (click)="cerrarSesion()"
+    ariaCurrentWhenActive="page">Cerrar Sesión</button>
+
   }@else {
-    <a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Iniciar Sesión</a>
+  <a routerLink="/login" routerLinkActive="active"
+    ariaCurrentWhenActive="page">Iniciar Sesión</a>
   }
-  </div>
-  <router-outlet></router-outlet>
+</div>
+<router-outlet></router-outlet>

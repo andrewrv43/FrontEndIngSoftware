@@ -15,7 +15,9 @@ export class ListProductoComponent {
   async ngOnInit() {
     await this.obtenerProductos();
   }
-
+regprod(){
+  window.location.replace('registerProduct')
+}
   async obtenerProductos() {
     try {
       const response = await fetch('https://accused-hedwig-sajaremastered-673fe6dd.koyeb.app/productos', {
