@@ -37,6 +37,14 @@ h2 {
     margin-bottom: 20px;
     text-align: center;
     color: #333;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, #61edff, #42dcde);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: 'Arial', sans-serif;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .search-container {
@@ -59,18 +67,32 @@ input[type="number"] {
 }
 
 button {
-    background-color: #ff0000;
+    background-color: rgb(0, 229, 255);
     color: white;
     border: none;
-    padding: 8px 12px;
+    padding: 5px 10px;
     cursor: pointer;
-    border-radius: 4px;
-    margin-right: 10px;
-}
-
-button:hover {
-    background-color: #b30600;
-}
+    font-size: 13px; 
+    font-weight: bold; 
+    border-radius: 5px; 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  }
+  
+  button:hover {
+    background-color: rgb(0, 127, 139);
+    transform: scale(1.05);
+  }
+  
+  button:active {
+    background-color: rgb(0, 107, 117);
+    transform: scale(0.98);
+  }
+  
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.5);
+  }
 
 table {
     width: 100%;
